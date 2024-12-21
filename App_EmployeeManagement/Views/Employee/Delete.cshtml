@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Employee Page";
+}
+@model App_EmployeeManagement.DBModel.Employee
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successfully Deleted</title>
+</head>
+<body>
+
+    <h2>Employee deleted Successfully - @Model.FirstName @Model.LastName</h2>
+
+    <a href="@Url.Action("Employee", "Employee")">Got to Employee Page</a>
+
+  
+
+</body>
+</html>

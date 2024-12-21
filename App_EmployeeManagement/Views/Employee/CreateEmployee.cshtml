@@ -1,0 +1,46 @@
+﻿@model App_EmployeeManagement.DBModel.Employee
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Employee</title>
+</head>
+<body>
+
+    <h2>Add New Employee</h2>
+
+    <form asp-action="CreateEmployee" method="post">
+        <div>
+            <label for="FirstName">First Name</label>
+            <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" required />
+        </div>
+
+        <div>
+            <label for="LastName">Last Name</label>
+            <input type="text" id="LastName" name="LastName" value="@Model.LastName" required />
+        </div>
+
+        <div>
+            <label for="Email">Email</label>
+            <input type="email" id="Email" name="Email" value="@Model.Email" required />
+        </div>
+
+        <div>
+            <label for="DepartmentId">Department</label>
+            <select id="DepartmentId" name="DepartmentId" required>
+                @foreach (var dept in ViewBag.Departments)
+                {
+                    <option value="@dept.DepartmentId">@dept.DepartmentName</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit">Add Employee</button>
+        <a href="@Url.Action("Employee", "Employee")">Cancel</a>
+        
+    </form>
+
+</body>
+</html>

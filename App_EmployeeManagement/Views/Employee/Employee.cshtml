@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Employee Page";
+}
+@model List<App_EmployeeManagement.DBModel.Employee>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+</head>
+<body>
+
+    <h2>Employee List</h2>
+    <a href="@Url.Action("CreateEmployee", "Employee")">Add New Employee</a>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.EmployeeId</td>
+                    <td><a href="@Url.Action("Details", "Employee", new { id = employee.EmployeeId })">@employee.FirstName</a></td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.Email</td>
+                    <td>@employee.Department?.DepartmentName</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Employee", new { id = employee.EmployeeId })">Edit</a>
+                        <a href="@Url.Action("DeleteConfirm", "Employee", new { id = employee.EmployeeId })">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
